@@ -8,6 +8,7 @@ import com.technologie.zad3.Model.Cat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class CatsController {
@@ -16,6 +17,11 @@ public class CatsController {
             new Cat("Mars", "miau", "black", "dry", 2),
             new Cat("Izaya", "meow", "white", "wet", 3),
             new Cat("Sergiej", "me#@!@!ew", "Orange", "uranium", 73)).toList();
+
+    @GetMapping("/cats")
+    public List<Cat> getListOfCats() {
+        return cats;
+    }
 
     @GetMapping("/cats/name/{name}")
     public Stream<Cat> getCatByName(@PathVariable String name) {
